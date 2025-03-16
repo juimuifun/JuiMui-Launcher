@@ -15,6 +15,7 @@ import popup from './utils/popup.js';
 import { skin2D } from './utils/skin.js';
 import slider from './utils/slider.js';
 
+// ฟังก์ชันตั้งค่าสีพื้นหลังตามธีม
 async function setBackground(theme) {
     if (typeof theme == 'undefined') {
         let databaseLauncher = new database();
@@ -38,6 +39,7 @@ async function setBackground(theme) {
     body.style.backgroundSize = 'cover';
 }
 
+// ฟังก์ชันเปลี่ยนแผง UI
 async function changePanel(id) {
     let panel = document.querySelector(`.${id}`);
     let active = document.querySelector(`.active`)
@@ -45,10 +47,12 @@ async function changePanel(id) {
     panel.classList.add("active");
 }
 
+// ฟังก์ชันดึงที่ตั้งแอป
 async function appdata() {
     return await ipcRenderer.invoke('appData').then(path => path)
 }
 
+// ฟังก์ชันเพิ่มบัญชีใหม่ใน UI
 async function addAccount(data) {
     let skin = false
     if (data?.profile?.skins[0]?.base64) skin = await new skin2D().creatHeadTexture(data.profile.skins[0].base64);
@@ -68,6 +72,7 @@ async function addAccount(data) {
     return document.querySelector('.accounts-list').appendChild(div);
 }
 
+// ฟังก์ชันเลือกบัญชี
 async function accountSelect(data) {
     let account = document.getElementById(`${data.ID}`);
     let activeAccount = document.querySelector('.account-select')
@@ -77,11 +82,13 @@ async function accountSelect(data) {
     if (data?.profile?.skins[0]?.base64) headplayer(data.profile.skins[0].base64);
 }
 
+// ฟังก์ชันตั้งค่าไอคอนผู้เล่น
 async function headplayer(skinBase64) {
     let skin = await new skin2D().creatHeadTexture(skinBase64);
     document.querySelector(".player-head").style.backgroundImage = `url(${skin})`;
 }
 
+// ฟังก์ชันตั้งสถานะเซิร์ฟเวอร์
 async function setStatus(opt) {
     let nameServerElement = document.querySelector('.server-status-name')
     let statusServerElement = document.querySelector('.server-status-text')
@@ -89,7 +96,7 @@ async function setStatus(opt) {
 
     if (!opt) {
         statusServerElement.classList.add('red')
-        statusServerElement.innerHTML = `Ferme - 0 ms`
+        statusServerElement.innerHTML = `ปิด - 0 ms`
         document.querySelector('.status-player-count').classList.add('red')
         playersOnline.innerHTML = '0'
         return
@@ -103,16 +110,15 @@ async function setStatus(opt) {
     if (!statusServer.error) {
         statusServerElement.classList.remove('red')
         document.querySelector('.status-player-count').classList.remove('red')
-        statusServerElement.innerHTML = `En ligne - ${statusServer.ms} ms`
+        statusServerElement.innerHTML = `ออนไลน์ - ${statusServer.ms} ms`
         playersOnline.innerHTML = statusServer.playersConnect
     } else {
         statusServerElement.classList.add('red')
-        statusServerElement.innerHTML = `Ferme - 0 ms`
+        statusServerElement.innerHTML = `ปิด - 0 ms`
         document.querySelector('.status-player-count').classList.add('red')
         playersOnline.innerHTML = '0'
     }
 }
-
 
 export {
     appdata as appdata,

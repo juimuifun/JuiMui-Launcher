@@ -1,40 +1,38 @@
 <div class="container">
     <div class="nav-settings">
-        <p>Paramètres</p>
+        <p>การตั้งค่า</p>
         <div class="nav-box">
-            <div id="account" class="nav-settings-btn active-settings-BTN">COMPTES</div>
+            <div id="account" class="nav-settings-btn active-settings-BTN">บัญชี</div>
             <div id="java" class="nav-settings-btn">JAVA</div>
-            <div id="resolution" class="nav-settings-btn">RESOLUTION</div>
-            <div id="launcher" class="nav-settings-btn">LAUNCHER</div>
-            <div id="save" class="nav-settings-btn">ACCUEIL</div>
+            <div id="resolution" class="nav-settings-btn">ความละเอียด</div>
+            <div id="launcher" class="nav-settings-btn">ตัวเปิดเกม</div>
+            <div id="save" class="nav-settings-btn">หน้าหลัก</div>
         </div>
     </div>
 
     <div id="account-tab" class="container-settings active-container-settings">
-        <div class="titre-tab">Comptes joueurs</div>
+        <div class="titre-tab">บัญชีผู้เล่น</div>
 
         <div class="accounts-list content-scroll">
             <div class="account" id="add">
                 <div class="add-profile">
                     <div class="icon-account-add"></div>
                 </div>
-                <div class="add-text-profile">Ajouter un compte</div>
+                <div class="add-text-profile">เพิ่มบัญชี</div>
             </div>
         </div>
     </div>
 
     <div id="java-tab" class="container-settings content-scroll">
-        <div class="titre-tab">Paramètre de votre RAM</div>
+        <div class="titre-tab">การตั้งค่า RAM ของคุณ</div>
         <div class="settings-elements-box">
             <div class="setting-text">
-                Définition de la RAM alloué à votre jeu, une quantité plus important augmenteras les performances de
-                votre jeu.<br>
-                A noter qu'il faut éviter de mettre une trop grande quantité sinon cela peut provoquer des pertes de
-                performances sur vos autres applications.<br><br>
-                <b>-RAM Maximale:</b> Indique la quantité totale de RAM allouée à votre jeu. Il est recommandé de ne pas
-                dépasser 50% de la quantité totale de RAM présente sur votre PC.<br><br>
-                <b>-RAM Minimale:</b> Indique la quantité minimale de RAM allouée au démarrage de votre jeu. Il est
-                recommandé de ne pas mettre plus de 4Go pour cette valeur.
+                กำหนดหน่วยความจำ RAM ที่จัดสรรให้เกมของคุณ ปริมาณที่มากขึ้นจะช่วยเพิ่มประสิทธิภาพของเกม<br>
+                โปรดทราบว่าไม่ควรจัดสรร RAM มากเกินไป เพราะอาจทำให้โปรแกรมอื่นๆ ช้าลงได้<br><br>
+                <b>-RAM สูงสุด:</b> ระบุจำนวน RAM สูงสุดที่จัดสรรให้เกมของคุณ แนะนำว่าไม่ควรเกิน 50% ของหน่วยความจำ RAM
+                ทั้งหมดที่มีในเครื่องคุณ<br><br>
+                <b>-RAM ขั้นต่ำ:</b> ระบุจำนวน RAM ขั้นต่ำที่จัดสรรให้เกมเมื่อเริ่มต้น แนะนำว่าไม่ควรเกิน 4GB
+                สำหรับค่าตัวนี้
             </div>
             <div class="settings-elements content-evenly">
                 <div class="memory-slider" min="0.5" max="8" step="0.5">
@@ -49,38 +47,37 @@
                     </div>
                 </div>
                 <div class="ram-info-block">
-                    <b>Vous possédez un total de <span id="total-ram">0 Go</span> RAM.</b><br>
-                    <b>Vous possédez un total de <span id="free-ram">0 Go</span> RAM disponible.</b>
+                    <b>คุณมี RAM ทั้งหมด <span id="total-ram">0 GB</span></b><br>
+                    <b>คุณมี RAM ว่าง <span id="free-ram">0 GB</span></b>
                 </div>
             </div>
         </div>
 
-        <div class="titre-tab">Emplacement de Java</div>
+        <div class="titre-tab">ตำแหน่งของ Java</div>
         <div class="settings-elements-box">
             <div class="setting-text">
-                Le launcher utilise une version embarquée de Java.<br>
-                Cette version est disponible dans le répertoire :<br><span class="java-path-txt"></span><br>
-                Toutefois, vous pouvez spécifier votre propre exécutable si votre jeu requiert une version de java plus
-                recente.
+                ตัวเปิดเกมนี้ใช้เวอร์ชัน Java ที่มาพร้อมกับตัวติดตั้ง<br>
+                เวอร์ชันนี้อยู่ในโฟลเดอร์:<br><span class="java-path-txt"></span><br>
+                อย่างไรก็ตาม คุณสามารถเลือกใช้ไฟล์ปฏิบัติการ Java ของคุณเองได้ หากเกมของคุณต้องการเวอร์ชันที่ใหม่กว่า
             </div>
             <div class="settings-elements content-evenly">
                 <input type="text" class="java-path-input-text" disabled>
                 <input type="file" class="java-path-input-file" accept="application/octet-stream" />
                 <div class="java-path-box">
-                    <div class="java-path-set java-path-btn">Changer</div>
-                    <div class="java-path-reset java-path-btn">Par defaut</div>
+                    <div class="java-path-set java-path-btn">เปลี่ยน</div>
+                    <div class="java-path-reset java-path-btn">ค่าเริ่มต้น</div>
                 </div>
             </div>
         </div>
     </div>
 
     <div id="resolution-tab" class="container-settings">
-        <div class="titre-tab">Paramètres de resolution Minecraft</div>
+        <div class="titre-tab">การตั้งค่าความละเอียดของ Minecraft</div>
         <div class="settings-elements-box">
             <div class="setting-text">
-                Définissez une résolution personnalisée afin d'avoir un jeu adapté à votre écran.<br>
-                Par défaut le jeu démarre en 854 X 480,<br>vous pouvez modifier cette valeur pour un confort de jeu
-                optimal. La résolution idéale est de 1280 X 720.
+                กำหนดความละเอียดเองเพื่อให้เหมาะสมกับหน้าจอของคุณ<br>
+                โดยปกติเกมจะเริ่มที่ 854 X 480<br>คุณสามารถปรับค่าเพื่อให้เล่นได้สะดวกยิ่งขึ้น ความละเอียดที่แนะนำคือ
+                1280 X 720
             </div>
             <div class="settings-elements content-center">
                 <div class="input-size-element">
@@ -88,67 +85,66 @@
                     <div class="size-cross"></div>
                     <input type="number" class="height-size input-resolution">
                 </div>
-                <div class="size-reset size-btn">Par defaut</div>
+                <div class="size-reset size-btn">ค่าเริ่มต้น</div>
             </div>
         </div>
     </div>
 
     <div id="launcher-tab" class="container-settings content-scroll">
-        <div class="titre-tab">Paramètre de téléchargement</div>
+        <div class="titre-tab">การตั้งค่าการดาวน์โหลด</div>
         <div class="settings-elements-box">
             <div class="setting-text">
-                Ce paramètre détermine le nombre maximum de fichiers pouvant être téléchargés simultanément lors de la
-                mise à jour ou du téléchargement de ressources.<br><br>
+                การตั้งค่านี้กำหนดจำนวนไฟล์สูงสุดที่สามารถดาวน์โหลดพร้อมกันได้ในระหว่างการอัปเดต
+                หรือการดาวน์โหลดทรัพยากร<br><br>
 
-                Veuillez noter que la modification de ce paramètre peut affecter les performances de
-                téléchargement.<br>
-                Il est recommandé de ne pas dépasser les limites recommandées par défaut,<br>
-                sauf si vous rencontrez des problèmes spécifiques de connectivité.
+                โปรดทราบว่าการเปลี่ยนแปลงตัวเลือกนี้อาจส่งผลต่อประสิทธิภาพการดาวน์โหลด<br>
+                แนะนำว่าไม่ควรเกินค่าที่กำหนดโดยค่าเริ่มต้น<br>
+                เว้นแต่ว่าคุณจะพบปัญหาด้านการเชื่อมต่อเฉพาะ
             </div>
             <div class="settings-elements content-center">
                 <input type="number" class="max-files input-max-files">
-                <p>Fichiers</p>
-                <div class="max-files-reset max-files-btn">Par defaut</div>
+                <p>ไฟล์</p>
+                <div class="max-files-reset max-files-btn">ค่าเริ่มต้น</div>
             </div>
         </div>
 
-        <div class="titre-tab">Thème clair et sombre</div>
+        <div class="titre-tab">ธีมสว่างและมืด</div>
         <div class="settings-elements-box">
             <div class="setting-text">
-                Choisissez entre le thème clair et le thème sombre pour personnaliser l'apparence du launcher.<br><br>
+                เลือกใช้ธีมสว่าง หรือธีมมืด เพื่อปรับแต่งรูปลักษณ์ของตัวเปิดเกม<br><br>
 
-                La modification du thème peut influencer la lisibilité et l'expérience visuelle.<br>
-                Sélectionnez celui qui vous convient le mieux en fonction de vos préférences.
+                การเปลี่ยนธีมอาจส่งผลต่อความสบายตาในการใช้งาน<br>
+                เลือกธีมที่เหมาะกับความชอบของคุณ
             </div>
             <div class="settings-elements content-center theme-box">
-                <div class="theme-btn theme-btn-clair">Clair</div>
-                <div class="theme-btn theme-btn-sombre">Sombre</div>
-                <div class="theme-btn theme-btn-auto">Automatique</div>
+                <div class="theme-btn theme-btn-clair">สว่าง</div>
+                <div class="theme-btn theme-btn-sombre">มืด</div>
+                <div class="theme-btn theme-btn-auto">อัตโนมัติ</div>
             </div>
         </div>
 
-        <div class="titre-tab">Comportement du launcher au démarrage</div>
+        <div class="titre-tab">พฤติกรรมของตัวเปิดเกมเมื่อเริ่มต้นเกม</div>
         <div class="settings-elements-box">
             <div class="setting-text">
-                Vous pouvez choisir si le launcher se ferme automatiquement ou reste ouvert lorsque vous lancez le jeu.
+                คุณสามารถเลือกได้ว่าตัวเปิดเกมจะปิดอัตโนมัติ หรือยังคงเปิดอยู่เมื่อคุณเริ่มเกม
             </div>
 
             <div class="settings-elements content-evenly close-box">
-                <div class="close-launcher close-btn">Fermer le launcher après le démarrage du jeu</div>
-                <div class="close-none close-btn">Garder le launcher ouvert</div>
-                <div class="close-all close-btn">Fermer le jeu si le launcher est fermé</div>
+                <div class="close-launcher close-btn">ปิดตัวเปิดเกมหลังจากเริ่มเกม</div>
+                <div class="close-none close-btn">ให้ตัวเปิดเกมเปิดอยู่</div>
+                <div class="close-all close-btn">ปิดเกมเมื่อปิดตัวเปิดเกม</div>
             </div>
         </div>
 
-        <!-- <div class="titre-tab">Environnement INTEL</div>
+        <!-- <div class="titre-tab">สภาพแวดล้อม INTEL</div>
         <div class="settings-elements-box">
             <div class="setting-text">
-                pour les jouer avec les proseceurs apple silicon 
+                สำหรับการเล่นบนโปรเซสเซอร์ Apple Silicon
             </div>
 
             <div class="settings-elements content-evenly close-box">
-                <div class="close-launcher close-btn">Environnement INTEL</div>
-                <div class="close-none close-btn">Environnement SILICON</div>
+                <div class="close-launcher close-btn">สภาพแวดล้อม INTEL</div>
+                <div class="close-none close-btn">สภาพแวดล้อม SILICON</div>
             </div>
         </div> -->
     </div>
