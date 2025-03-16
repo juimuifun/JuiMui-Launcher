@@ -5,7 +5,7 @@
     "description": "JuiMui Launcher",
     "main": "src/app.js",
     "author": {
-        "name": "JuiMui and luuxis, Inc.",
+        "name": "JuiMui",
         "email": "juimui.fun@gmail.com",
         "url": "https://github.com/juimuifun"
     },
