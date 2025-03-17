@@ -20,7 +20,7 @@ class Login {
                 this.getAZauth();
             }
         }
-        
+
         document.querySelector('.cancel-home').addEventListener('click', () => {
             document.querySelector('.cancel-home').style.display = 'none'
             changePanel('settings')
@@ -66,6 +66,7 @@ class Login {
         let loginOffline = document.querySelector('.login-offline');
 
         let emailOffline = document.querySelector('.email-offline');
+        let passwordOffline = document.querySelector('.password-offline');
         let connectOffline = document.querySelector('.connect-offline');
         loginOffline.style.display = 'block';
 
@@ -88,21 +89,62 @@ class Login {
                 return;
             }
 
-            let MojangConnect = await Mojang.login(emailOffline.value);
-
-            if (MojangConnect.error) {
+            if (passwordOffline.value.length < 3) {
                 popupLogin.openPopup({
                     title: 'ข้อผิดพลาด',
-                    content: MojangConnect.message,
+                    content: 'รหัสผ่านของคุณต้องมีความยาวอย่างน้อย 3 ตัวอักษร',
                     options: true
                 });
                 return;
             }
-            await this.saveData(MojangConnect)
-            popupLogin.closePopup();
+
+            try {
+                let response = await fetch('https://juimui.fun/launcher_backend/login.php', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-Launcher': '1'
+                    },
+                    body: JSON.stringify({
+                        username: emailOffline.value,
+                        password: passwordOffline.value
+                    })
+                });
+
+                let result = await response.json();
+
+                if (result.status !== 'success') {
+                    popupLogin.openPopup({
+                        title: 'ข้อผิดพลาด',
+                        content: 'การเข้าสู่ระบบล้มเหลว',
+                        options: true
+                    });
+                    return;
+                }
+
+                let MojangConnect = await Mojang.login(emailOffline.value);
+
+                if (MojangConnect.error) {
+                    popupLogin.openPopup({
+                        title: 'ข้อผิดพลาด',
+                        content: MojangConnect.message,
+                        options: true
+                    });
+                    return;
+                }
+
+                await this.saveData(MojangConnect);
+                popupLogin.closePopup();
+            } catch (error) {
+                popupLogin.openPopup({
+                    title: 'ข้อผิดพลาด',
+                    content: 'เกิดข้อผิดพลาดในการเชื่อมต่อกับเซิร์ฟเวอร์',
+                    options: true
+                });
+            }
         });
     }
-
+    
     async getAZauth() {
         console.log('กำลังเริ่มต้นการเข้าสู่ระบบ AZauth...');
         let AZauthClient = new AZauth(this.config.online);
