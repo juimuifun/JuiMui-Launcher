@@ -1,19 +1,79 @@
+/* ทำให้ container เป็น sidebar ที่อยู่ด้านขวา และมีเอฟเฟกต์เบลอ */
 .login .container {
     display: flex;
+    flex-direction: column;
+    /* วางรายการในแนวตั้ง */
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
+    /* จัดวางเนื้อหาจากด้านบน */
+    position: fixed;
+    /* ให้ sidebar อยู่ถาวร */
+    top: 0;
+    right: 0;
     height: 100%;
+    width: 30%;
+    /* กำหนดความกว้างของ sidebar */
+    background-color: rgba(0, 0, 0, 0.5);
+    /* สีพื้นหลังโปร่งใส */
+    backdrop-filter: blur(10px);
+    /* เบลอพื้นหลัง */
+    padding: 20px;
+    box-sizing: border-box;
 }
 
+/* ให้ icon อยู่ที่ด้านบนสุด */
+.icon-container {
+    display: flex;
+    justify-content: center;
+    /* จัดกลาง */
+    margin-top: 40px;
+    /* ระยะห่างด้านบน */
+    margin-bottom: 40px;
+    /* เพิ่มระยะห่างระหว่างไอคอนและข้อความ */
+}
+
+/* กำหนดขนาดของ icon */
+.icon {
+    max-width: 100px;
+    max-height: 100px;
+    object-fit: contain;
+}
+
+.login-text {
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: var(--color);
+    margin-bottom: 10px;
+}
+
+/* ตรงกลางของ login-tabs ภายใน sidebar */
 .login-tabs {
-    position: absolute;
-    padding: 15px;
-    background: var(--background);
-    border-radius: 15px;
+    position: relative;
+    padding: 20px;
     text-align: center;
-    min-width: 40%;
+    width: 100%;
+    /* ทำให้กว้างเต็มที่ */
+    max-width: 350px;
+    /* จำกัดความกว้างสูงสุด */
+    background: none;
+    /* ลบสีพื้นหลัง */
 }
 
+.login-options p {
+    color: var(--color);
+    /* หรือกำหนดเป็นสีที่ต้องการเช่น #fff */
+    font-size: 0.9rem;
+    /* ขนาดตัวหนังสือ (ปรับตามต้องการ) */
+}
+
+.login-options p a {
+    color: #ffffff;
+    /* สีขาว */
+    text-decoration: underline;
+    /* เส้นใต้ลิงก์ (ถ้าต้องการ) */
+}
+
+/* ซ่อน login ที่ไม่ต้องการ */
 .login-home,
 .login-offline,
 .login-AZauth,
@@ -21,30 +81,59 @@
     display: none;
 }
 
-.login-text {
-    font-size: 1.3rem;
-}
-
-.connect,
-.cancel {
-    background: none;
+/* ปรับ input และ connect ให้ขนาดเท่ากัน */
+.input-login .email,
+.input-login .password,
+.A2F,
+.connect {
     color: var(--color);
-    border: solid 4px var(--element-color);
-    border-radius: 10px;
-    padding: 0.3rem 4rem;
-    font-size: inherit;
+    background: #212529;
+    border: none;
+    /* เอา border ออก */
+    border-radius: 0px;
+    /* ทำให้เป็นเหลี่ยม */
+    width: 100%;
+    /* กำหนดความกว้างเต็มที่ */
+    height: 50px;
+    padding: 0.4rem 1rem;
+    margin-top: 10px;
+    box-sizing: border-box;
+    /* ให้รวม padding เข้าไปในขนาด */
+    font-size: 1rem;
     font-weight: bold;
-    margin: 15px 10px;
 }
 
+/* ปรับปุ่ม connect ให้มีสีใหม่ */
+.connect {
+    background: linear-gradient(to right, #9e7c2e, #ebd176); /* ไล่สีจากซ้ายไปขวา */
+    /* เปลี่ยนสีปุ่ม */
+    color: #000;
+    /* เปลี่ยนสีข้อความในปุ่ม */
+}
+
+/* ปรับความกว้างของ input ต่างๆ */
 .input-login .email,
 .input-login .password,
 .A2F {
-    color: var(--color);
-    background: none;
-    border: solid 2px var(--element-color);
-    border-radius: 30px;
-    width: 50%;
-    padding: 0.4rem 1rem;
-    margin-top: 10px;
+    width: 100%;
+    /* ให้ทุก input ยาวเท่ากัน */
+    margin-top: 20px;
+    /* เพิ่มระยะห่างจาก input */
+}
+
+/* ให้ปุ่ม connect ยาวเท่ากับ input */
+.connect {
+    width: 100%;
+    margin-top: 40px;
+    /* เพิ่มระยะห่างจาก input */
+    margin-bottom: 5px;
+}
+
+/* เพิ่มระยะห่างระหว่างกรอบและเนื้อหา */
+.input-login .email,
+.input-login .password,
+.A2F,
+.connect {
+    padding-left: 1rem;
+    padding-right: 1rem;
 }

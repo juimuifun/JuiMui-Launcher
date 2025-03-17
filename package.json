@@ -1,7 +1,7 @@
 {
     "name": "JuiMui-Launcher",
     "preductName": "JuiMui Launcher",
-    "version": "0.0.4",
+    "version": "0.0.5",
     "description": "JuiMui Launcher",
     "main": "src/app.js",
     "author": {
